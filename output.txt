@@ -1,0 +1,16 @@
+Outputting elements of the vector:
+Vector 1 (created using the default constructor): []
+Vector 2 (created using data from input.txt): [1 0 0 1 1 ]
+
+Filling vector 1 with data from the input.txt but data coming in Vector 1 directly:
+[0 0 1 1 0 ]
+
+Example of the XOR (^) operation:
+Vector 1 XOR Vector 2: [1 0 1 0 1 ]
+
+Example of assignment operation with copying:
+Vector 4 (copied from Vector 2): [1 0 0 1 1 ]
+
+Example of assignment operation with moving:
+Vector 5 (moved from Vector 2): [1 0 0 1 1 ]
+Vector 2 after move: []
