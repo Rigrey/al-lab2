@@ -8,7 +8,7 @@
 
 class CustomVector {
 private:
-    bool* arr;
+    int* arr;
     size_t size;
     size_t capacity;
 
@@ -16,25 +16,25 @@ private:
     void resize(size_t newCapacity);
 public:
     CustomVector();
-    CustomVector(bool* bool_arr, size_t& vec_size);
+    CustomVector(int* int_arr, size_t& vec_size);
     CustomVector(const CustomVector& copied_vec);
     CustomVector(CustomVector&& moved_vec) noexcept;
     ~CustomVector();
 
-    bool operator[](size_t index) const;
-    friend CustomVector operator^(const CustomVector& vec1, const CustomVector& vec2);
+    int operator[](size_t index) const;
+    CustomVector& operator--();
 
     friend std::ostream& operator<<(std::ostream& os, const CustomVector& vec);
     friend std::istream& operator>>(std::istream& is, CustomVector& vec);
 
-    void push_back(const bool& value);
+    void push_back(const int& value);
 };
 
-CustomVector::CustomVector() : arr(new bool[1]), size(0), capacity(1) {}
+CustomVector::CustomVector() : arr(new int[1]), size(0), capacity(1) {}
 
-CustomVector::CustomVector(bool* bool_arr, size_t& vec_size) : arr(bool_arr), size(vec_size), capacity(closestPowerOfTwo(vec_size)) {}
+CustomVector::CustomVector(int* int_arr, size_t& vec_size) : arr(int_arr), size(vec_size), capacity(closestPowerOfTwo(vec_size)) {}
 
-CustomVector::CustomVector(const CustomVector& other) : arr(new bool[other.capacity]), size(other.size), capacity(other.capacity) {
+CustomVector::CustomVector(const CustomVector& other) : arr(new int[other.capacity]), size(other.size), capacity(other.capacity) {
     for (size_t i = 0; i < other.size; ++i) {
         arr[i] = other.arr[i];
     }
@@ -42,29 +42,22 @@ CustomVector::CustomVector(const CustomVector& other) : arr(new bool[other.capac
 
 CustomVector::CustomVector(CustomVector&& moved_vec) noexcept : arr(moved_vec.arr), size(moved_vec.size), capacity(moved_vec.capacity) {
     moved_vec.arr = nullptr;
-    moved_vec.arr = new bool[1];
-    moved_vec.size = 0;
-    moved_vec.capacity = 0;
+    moved_vec.arr = new int[1];
 }
 
 CustomVector::~CustomVector() {
     delete[] arr;
 }
 
-bool CustomVector::operator[](size_t index) const {
+int CustomVector::operator[](size_t index) const {
     return arr[index];
 }
 
-CustomVector operator^(const CustomVector& vec1, const CustomVector& vec2) {
-    if (vec1.size != vec2.size) {
-        std::cerr << "Error: Vectors of different lengths!" << std::endl;
-        return CustomVector();
+CustomVector& CustomVector::operator--() {
+    for (size_t i = 0; i < size; ++i) {
+        arr[i] = --arr[i];
     }
-    CustomVector res;
-    for (size_t i = 0; i < vec1.size; ++i) {
-        res.push_back(vec1.arr[i] ^ vec2.arr[i]);
-    }
-    return res;
+    return *this;
 }
 
 std::ostream& operator<<(std::ostream& os, const CustomVector& vec) {
@@ -77,13 +70,13 @@ std::ostream& operator<<(std::ostream& os, const CustomVector& vec) {
 }
 
 std::istream& operator>>(std::istream& is, CustomVector& vec) {
-    bool value;
+    int value;
     is >> value;
     vec.push_back(value);
     return is;
 }
 
-void CustomVector::push_back(const bool& value) {
+void CustomVector::push_back(const int& value) {
     if (size == capacity) {
         resize(capacity * 2);
     }
@@ -91,7 +84,7 @@ void CustomVector::push_back(const bool& value) {
 }
 
 void CustomVector::resize(size_t newCapacity) {
-    bool* new_arr = new bool[newCapacity];
+    int* new_arr = new int[newCapacity];
     for (size_t i = 0; i < size; ++i) {
         new_arr[i] = arr[i];
     }

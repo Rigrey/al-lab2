@@ -1,16 +1,16 @@
 Outputting elements of the vector:
 Vector 1 (created using the default constructor): []
-Vector 2 (created using data from input.txt): [1 0 0 1 1 ]
+Vector 2 (created using data from input.txt): [126923 9524 5 0 -156 ]
 
 Filling vector 1 with data from the input.txt but data coming in Vector 1 directly:
-[0 0 1 1 0 ]
+[-194 1247 0 5 12950 ]
 
-Example of the XOR (^) operation:
-Vector 1 XOR Vector 2: [1 0 1 0 1 ]
+Example of the prefix-decrement operation on Vector 2:
+[126922 9523 4 -1 -157 ]
 
 Example of assignment operation with copying:
-Vector 4 (copied from Vector 2): [1 0 0 1 1 ]
+Vector 3 (copied from Vector 1): [-194 1247 0 5 12950 ]
 
 Example of assignment operation with moving:
-Vector 5 (moved from Vector 2): [1 0 0 1 1 ]
-Vector 2 after move: []
+Vector 4 (moved from Vector 2): [126922 9523 4 -1 -157 ]
+Vector 2 after move: [152288 21840 0 0 0 ]

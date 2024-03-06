@@ -1,4 +1,5 @@
 #include "../include/CustomVector.h"
+#include <utility>
 
 int main() {
     std::ofstream os("output.txt");
@@ -17,7 +18,7 @@ int main() {
     // Creating a vector object based on data from input.txt
     size_t size;
     is >> size;
-    bool* arr = new bool[size];
+    int* arr = new int[size];
     for (size_t i = 0; i < size; ++i) {
         is >> arr[i];
     }
@@ -40,22 +41,20 @@ int main() {
     customPrint(vec1);
     customPrint("\n\n");
 
-    customPrint("Example of the XOR (^) operation:\n");
-    CustomVector vec3 = vec1 ^ vec2;
-    customPrint("Vector 1 XOR Vector 2: ");
-    customPrint(vec3);
+    customPrint("Example of the prefix-decrement operation on Vector 2:\n");
+    customPrint(--vec2);
     customPrint("\n\n");
 
     customPrint("Example of assignment operation with copying:\n"); 
-    CustomVector vec4 = vec2;
-    customPrint("Vector 4 (copied from Vector 2): ");
-    customPrint(vec4);
+    CustomVector vec3 = vec1;
+    customPrint("Vector 3 (copied from Vector 1): ");
+    customPrint(vec3);
     customPrint("\n\n");
 
     customPrint("Example of assignment operation with moving:\n"); 
-    CustomVector vec5 = static_cast<CustomVector &&>(vec2);
-    customPrint("Vector 5 (moved from Vector 2): ");
-    customPrint(vec5);
+    CustomVector vec4 = std::move(vec2);
+    customPrint("Vector 4 (moved from Vector 2): ");
+    customPrint(vec4);
     customPrint("\n");
     
     customPrint("Vector 2 after move: ");
