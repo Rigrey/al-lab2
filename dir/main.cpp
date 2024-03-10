@@ -1,7 +1,7 @@
 #include "../include/CustomVector.h"
-#include <utility>
 
 int main() {
+    // Clearing output.txt file
     std::ofstream os("output.txt");
     os.close();
 

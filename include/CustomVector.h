@@ -4,7 +4,6 @@
 #include <cmath>
 #include <fstream>
 #include <iostream>
-#include <ostream>
 
 class CustomVector {
 private:
