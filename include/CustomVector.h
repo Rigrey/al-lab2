@@ -41,7 +41,8 @@ CustomVector::CustomVector(const CustomVector& other) : arr(new int[other.capaci
 
 CustomVector::CustomVector(CustomVector&& moved_vec) noexcept : arr(moved_vec.arr), size(moved_vec.size), capacity(moved_vec.capacity) {
     moved_vec.arr = nullptr;
-    moved_vec.arr = new int[1];
+    moved_vec.size = 0;
+    moved_vec.capacity = 0;
 }
 
 CustomVector::~CustomVector() {
@@ -54,7 +55,7 @@ int CustomVector::operator[](size_t index) const {
 
 CustomVector& CustomVector::operator--() {
     for (size_t i = 0; i < size; ++i) {
-        arr[i] = --arr[i];
+        --arr[i];
     }
     return *this;
 }

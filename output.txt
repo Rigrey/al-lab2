@@ -13,4 +13,4 @@ Vector 3 (copied from Vector 1): [-194 1247 0 5 12950 ]
 
 Example of assignment operation with moving:
 Vector 4 (moved from Vector 2): [126922 9523 4 -1 -157 ]
-Vector 2 after move: [152288 21840 0 0 0 ]
+Vector 2 after move: []
